@@ -1,6 +1,6 @@
 ## About Ucartz  SSL Stream Converter
 
-MultiStream SSL Converter is a web application Using MultiStream SSL Converter, you can covert multiple non-SSL streams to enable SSL(HTTPS).
+SSL Stream Converter is a web application Using SSL Stream Converter, you can covert multiple non-SSL streams to enable SSL(HTTPS).
 
 ##How to it works?
 
