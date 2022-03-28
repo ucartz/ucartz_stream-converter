@@ -7,6 +7,7 @@ SSL Stream Converter is a web application Using SSL Stream Converter, you can co
 
 - First, you need to download the file.
 - Later upload the .zip file to your Hosting control panel under the public directory.
+- then open the forlder and extract the vendor.zip .
 - Now create a database and import the ssl_stream_converter.sql file.
 - Open the file manager of hosting to configure the Stream SSL Converter, enter the database details in .env file.
 - You are ready to use the  Ucartz Stream SSL Converter.
