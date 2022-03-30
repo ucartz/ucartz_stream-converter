@@ -106,7 +106,11 @@ use Illuminate\Support\Facades\URL;
                         }
                         ?>
                 </div>
-<h1 style="font-size: 60px;">SSL Stream Converter</h1>
+<h1 style="font-size: 60px;text-transform: uppercase;
+    background: linear-gradient(to right, #d03081 0%, #330867 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">SSL Stream Converter</h1>
+<p>Powered by Antbae Fz LLC</p>
                 <!-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
