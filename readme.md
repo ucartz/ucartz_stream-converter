@@ -1,13 +1,18 @@
 ## About Ucartz  SSL Stream Converter
 
-SSL Stream Converter is a web application Using SSL Stream Converter, you can covert multiple non-SSL streams to enable SSL(HTTPS).
+SSL Stream Converter is a web application. You can covert multiple non-SSL(HTTP) streams to SSL(HTTPS) streams using SSL Stream Converter.
 
-##How to it works?
+##How does it work?
 
 
-- First, you need to download the file.
-- Later upload the .zip file to your Hosting control panel under the public directory.
-- Then open the folder and extract the vendor.zip .
-- Now create a database and import the ssl_stream_converter.sql file.
-- Open the file manager of hosting to configure the Stream SSL Converter, enter the database details in .env file.
-- You are ready to use the  Ucartz Stream SSL Converter.
+- First, you need to download the .zip file.
+- Upload the .zip file to your Hosting control panel under the public directory once you have downloaded the file.
+- Extract the (.zip) file.
+- Within the folder, you can see another file, named vendor.zip, and you need to extract this file, either.
+- Now create a database and import the ssl_stream_converter.sql (You can find this .sql file under the root directory) file.
+- Open the .env file and update database details (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
+- With this, you are ready to use the Ucartz Stream SSL Converter.
+- Open your favourite browser and then open the URL—for instance, https://yourdomain/ or https://yourdomain/yourfolder.
+- You must be able to see the home page of your SSL Stream Converter. Please register and start using the SSL Stream Converter.
+
+Note: If you don't see the .env file, go to settings and tick the option "Show hidden files" (applicable only if you are using the cPanel control panel).
