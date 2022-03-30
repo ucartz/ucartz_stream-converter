@@ -106,7 +106,7 @@ use Illuminate\Support\Facades\URL;
                         }
                         ?>
                 </div>
-
+<h1 style="font-size: 60px;">SSL Stream Converter</h1>
                 <!-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
