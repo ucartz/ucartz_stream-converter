@@ -16,3 +16,15 @@ SSL Stream Converter is a web application. You can covert multiple non-SSL(HTTP)
 - You must be able to see the home page of your SSL Stream Converter. Please register and start using the SSL Stream Converter.
 
 Note: If you don't see the .env file, go to settings and tick the option "Show hidden files" (applicable only if you are using the cPanel control panel).
+
+For detailed instructions along with the screenshot, Please find the word file included.
+
+
+
+
+
+
+
+
+
+
