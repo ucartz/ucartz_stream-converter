@@ -53,3 +53,9 @@ Route::get('/playRadio/{id}', 'RadioController@playRadio')->middleware('auth');
     $result = File::makeDirectory(base_path().'storage/app/radiostreamfiles/radio');
     dd($result); // return true if folder created
 });*/
+Route::get('/clear-cache', function() {
+     Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    
+    // return what you want
+});
