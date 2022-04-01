@@ -48,7 +48,7 @@ class AdminController extends Controller
                 'mobile' => 'required|numeric',
                 'address' => 'required|string',
                 'country' => 'required|string',
-                'photo' => 'required|mimes:jpeg,jpg,png,gif|max:10000',
+                'photo' => 'sometimes|mimes:jpeg,jpg,png,gif,webp|max:100000',
                 'status' => 'required',
             ]);
         $errors = $validator->errors();
@@ -97,19 +97,28 @@ class AdminController extends Controller
                                     ]);
     }
     public function editUser($user_id){
+        $auth_user_id = Auth::user()->userId;
+        $role = Auth::user()->role;
         $users = User::where('userId','=',$user_id)->first();
         return view('user-management.editUser',[
-                                    'users'=>$users
+                                    'users'=>$users,
+                                    'auth_user_id'=>$auth_user_id,
+                                    'user_id'=>$user_id,
+                                    'role'=>$role 
                                     ]);
     }
     public function updateUser($user_id, Request $request)
     {
+        $auth_user_id = Auth::user()->userId;
         //$user = User::where('userId','=',$user_id)->first();
         $user = User::find($user_id);
         $user_count = User::all()->count();
          $role = Auth::user()->role;
-        if($user['photo'] == ""){
-            $validator = Validator::make($request->all(), [ 
+        //if($user['photo'] == ""){
+        if($auth_user_id == $user_id){
+            $passwordCheck = $request->input('password') != null;
+            if($passwordCheck){
+                $validator = Validator::make($request->all(), [ 
                     
                     'name' => 'required|string|max:255',
                     'email' => 'required|string|max:255|email|unique:users,email,'.$user_id.',userId',
@@ -117,18 +126,31 @@ class AdminController extends Controller
                     'mobile' => 'required|numeric',
                     'address' => 'required|string',
                     'country' => 'required|string',
-                    'photo' => 'required|mimes:jpeg,jpg,png,gif|max:10000',
+                    'photo' => 'sometimes|mimes:jpeg,jpg,png,gif,webp|max:100000',
                 ]);
+            }else{
+                $validator = Validator::make($request->all(), [ 
+                    
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string|max:255|email|unique:users,email,'.$user_id.',userId',
+                   // 'password' => 'required|string|min:6|confirmed', 
+                    'mobile' => 'required|numeric',
+                    'address' => 'required|string',
+                    'country' => 'required|string',
+                    'photo' => 'sometimes|mimes:jpeg,jpg,png,gif,webp|max:100000',
+                ]);
+            }
+            
         }else{
             $validator = Validator::make($request->all(), [ 
                     
                     'name' => 'required|string|max:255',
                     'email' => 'required|string|max:255|email|unique:users,email,'.$user_id.',userId',
-                    'password' => 'required|string|min:6|confirmed', 
+                   // 'password' => 'required|string|min:6|confirmed', 
                     'mobile' => 'required|numeric',
                     'address' => 'required|string',
                     'country' => 'required|string',
-                    //'photo' => 'required|mimes:jpeg,jpg,png,gif|max:10000',
+                    'photo' => 'sometimes|mimes:jpeg,jpg,png,gif,webp|max:100000',
                 ]);
         }
         $errors = $validator->errors();
@@ -140,7 +162,7 @@ class AdminController extends Controller
                     $file = Input::file('photo');
                     $filename = time(). '-' . $file->getClientOriginalName();
                     $file = $file->move(public_path().'/uploads/users/', $filename);
-                    $url=  URL::to("/").'/uploads/users/'.$filename;
+                    $url=  URL::to("/").'/public/uploads/users/'.$filename;
                 }else{
                     if($user['photo'] == ""){
                         $url= '';
@@ -151,12 +173,17 @@ class AdminController extends Controller
 
                  $user['name']= $input['name'];
                 $user['email']= $input['email'];
-                $user['password']= Hash::make($input['password']);
-                if($role == 'admin'){
+                if($auth_user_id == $user_id){
+                    if($passwordCheck){
+                        $user['password']= Hash::make($input['password']);
+                    }
+                }
+                //$user['password']= Hash::make($input['password']);
+                /*if($role == 'admin' &&  $auth_user_id == $user_id){
                     $user['role'] = "admin";
                 }else{
                     $user['role'] = "user";
-                }
+                }*/
                 $user['mobile']= $input['mobile'];
                 $user['address']= $input['address'];
                 $user['country']= $input['country'];
