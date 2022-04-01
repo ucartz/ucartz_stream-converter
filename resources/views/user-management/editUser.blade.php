@@ -48,28 +48,40 @@
                                 @endif
                             </div>
                         </div>
-
+                        <?php  if($auth_user_id == $user_id){ ?>
+                        
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Do you want to change the password?</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Enter New Password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="checkbox" name="password_change" id="password_change">
                             </div>
                         </div>
+                        <div id="password_holder">
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Enter New Password" required>
+    
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                        
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm New Password" required>
+                            <div class="form-group row">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm New Password" required>
+                                </div>
                             </div>
                         </div>
+                        <?php } ?>
 
                         <div class="form-group row">
                             <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
@@ -133,14 +145,14 @@
                                 @endif
                             </div>
                         </div>
-
+<?php if($role =="admin" ){ ?>
                         <div class="form-group row">
                             <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
 
                             <div class="col-md-6">
-                               <select name="status" id="status" class="form-control">
+                               <select name="status" id="status" class="form-control" <?php if($role =="admin" && $auth_user_id == $user_id){ ?>readonly<?php } ?>>
                                  	<option value="1" <?php if($users->status==1){echo "selected";}?>>Active</option>
-                                 	<option value="0" <?php if($users->status==0){echo "selected";}?>>Inactive</option>
+                                 	<?php if($users->role !="admin"){ ?><option value="0" <?php if($users->status==0){echo "selected";}?>>Inactive</option> <?php } ?>
                                  </select>
                                 @if ($errors->has('status'))
                                     <span class="invalid-feedback" role="alert">
@@ -149,6 +161,7 @@
                                 @endif
                             </div>
                         </div>
+<?php } ?>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -162,4 +175,22 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function() {
+    $('#password_holder').hide();
+    var ckbox = $('#password_change');
+
+    $('input').on('click',function () {
+        if (ckbox.is(':checked')) {
+            $('#password_holder').show();
+           /* $('#password').val("");
+            $('#password-confirm').val("");*/
+        } else {
+            $('#password_holder').hide();
+            $('#password').val("");
+            $('#password-confirm').val("");
+        }
+    });
+});
+</script>
 @endsection
