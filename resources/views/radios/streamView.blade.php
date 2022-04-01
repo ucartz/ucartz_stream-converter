@@ -35,7 +35,7 @@ URL::to('/')."/playRadio/".$radios['id']
 			
 			<?php  $url = $stream_url;//URL::to('/').'/playRadio/'.$radios['id'] ;?>
 <!-- <iframe src={!! $url !!} ></iframe> -->
-<div id="video-player" style="background: url('/image/player.gif')">
+<div id="video-player" style="">
 	<video width="100%" controls>
 	    
     	<source src="{{ URL::to('/').$url }}" type="audio/mpeg">
