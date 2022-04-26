@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 use RadioStream\SoftwareManagement;
-
 use Illuminate\Support\Facades\URL;
  ?>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -40,12 +39,10 @@ use Illuminate\Support\Facades\URL;
   border: none;
   cursor: pointer;
 }
-
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -54,20 +51,16 @@ use Illuminate\Support\Facades\URL;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-
 .dropdown-content a:hover {background-color: #f1f1f1}
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .dropdown:hover .dropbtn {
  /*  background-color: #3e8e41; */
 }
@@ -264,7 +257,7 @@ use Illuminate\Support\Facades\URL;
                 @yield('content')
             </div>
         <footer class="footer" style="text-align: center;">
-            Developed by <a href="ucartz.com">Ucartz.com</a> and powered by <a href="zerolabz.com">Zerolabz.com</a>.
+            Developed by <a href="https://ucartz.com" target="_blank">Ucartz.com</a> and powered by <a href="https://antbae.com/" target="_blank">Antbae.com</a>.
         </footer>
     </div>
 
@@ -277,14 +270,12 @@ use Illuminate\Support\Facades\URL;
         /*function setTextBoxes(psMyIp)
         {
           sArr = psMyIp.split(".");
-
           document.getElementById("text1").value = sArr[0];
           document.getElementById("text2").value = sArr[1];
           document.getElementById("text3").value = sArr[2];
           document.getElementById("text4").value = sArr[3];
           return sArr;
         }*/
-
 function validateForm() {
   var server = document.forms["radio_form"]["server"].value;
   var port = document.forms["radio_form"]["port"].value;
