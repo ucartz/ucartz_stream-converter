@@ -92,7 +92,7 @@ use Illuminate\Support\Facades\URL;
                         if(!empty($sofware_info)){
 
                         if($sofware_info['logo'] == ""){
-                            $logo = URL::to("/").'/uploads/logo/ucartz-logo.png';
+                            $logo = URL::to("/").'/uploads/logo/dummy-logo.png';
                         }else{
                             $logo = $sofware_info['logo'];
                         }
