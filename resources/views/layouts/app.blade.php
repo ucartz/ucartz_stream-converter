@@ -102,7 +102,7 @@ use Illuminate\Support\Facades\URL;
                         <?php //dd($data);
                         $sofware_info = SoftwareManagement::where('status','=','1')->first();
                         if($sofware_info['logo'] == ""){
-                            $logo = URL::to("/").'/uploads/logo/ucartz-logo.png';
+                            $logo = URL::to("/").'/uploads/logo/dummy-logo.png';
                         }else{
                             $logo = $sofware_info['logo'];
                         }
