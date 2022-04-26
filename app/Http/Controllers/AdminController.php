@@ -60,7 +60,7 @@ class AdminController extends Controller
                     $file = Input::file('photo');
                     $filename = time(). '-' . $file->getClientOriginalName();
                     $file = $file->move(public_path().'/uploads/users/', $filename);
-                    $url=  URL::to("/").'/uploads/users/'.$filename;
+                    $url=  URL::to("/").'/public/uploads/users/'.$filename;
                 }else{
                     $url= '';
                 }
